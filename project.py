@@ -23,3 +23,25 @@ for line in fileparse:
 		
 		
 fileparse.close()
+
+
+
+
+answers=open("answers.txt","w+")
+#total requests
+
+answers.write("The total number of requests is: "+str(numrequest)+" .") 
+
+
+
+#average per day, week, month
+
+
+
+#not successful
+
+
+#redirected
+
+
+#most and least requested file
