@@ -61,3 +61,25 @@ answers.write("The percentage of total requests that were unsuccessful is: " +st
 answers.write("The percentage of total requests that were redirected is: " +str(round((numredirect/numrequest)*100))+"%."+"\n")
 
 #most and least requested file
+
+mostreq=""
+leastreq=""
+mostint=0
+leastint=numrequest
+listleastreq=[]
+
+for key,value in filenames.items():
+	if value > mostint:
+		mostint=value
+		mostreq=key
+	if value < leastint:
+		leastint=value
+
+for key,value in filenames.items():
+	if value == leastint:
+		listleastreq.append(key)
+
+answers.write("The most requested file was "+str(mostreq)+"."+"\n")
+answers.write("The least requested files are listed below all being requested "+str(leastint)+" time."+"\n")
+for item in listleastreq:
+	answers.write(item +"   ")
