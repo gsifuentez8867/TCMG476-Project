@@ -1,5 +1,6 @@
 from urllib.request import urlretrieve
 import re
+from datetime import datetime
 
 
 URL_PATH= 'https://s3.amazonaws.com/tcmg476/http_access_log'
@@ -13,6 +14,7 @@ regex = re.compile(".*\[([^:]*):(.*) \-[0-9]{4}\] \"([A-Z]+) (.+?)( HTTP.*\"|\")
 unsuccess= re.compile("4[0-9][0-9]")
 redirect= re.compile("3[0-9][0-9]")
 
+date_format= "%d/%b/%Y"
 filenames = {}
 
 numrequest=0
@@ -26,8 +28,9 @@ for line in fileparse:
 	parts= regex.split(current)
 	if len(parts) < 7:
 		continue
-		
-		numrequest+=1
+	if numrequest==0:
+		firstdate=datetime.strptime(parts[1],date_format)	
+	numrequest+=1
 	if unsuccess.match(parts[6]):
 		numbad+=1
 	if redirect.match(parts[6]):
@@ -36,6 +39,9 @@ for line in fileparse:
 		filenames[parts[4]]+=1
 	else:
 		filenames[parts[4]]=1	
+		
+lastdate=datetime.strptime(parts[1],date_format)
+
 fileparse.close()
 
 
