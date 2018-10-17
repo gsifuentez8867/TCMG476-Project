@@ -22,6 +22,28 @@ numbad=0
 numredirect=0
 
 
+month= re.compile("[A-Z][a-z][a-z]")
+
+
+
+months=['Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep']
+
+october= open("october.txt","w+")
+november= open("november.txt","w+")
+december= open("december.txt","w+")
+january = open("november.txt","w+")
+feburary= open("feburary.txt","w+")
+march= open("march.txt","w+")
+april= open("april.txt","w+")
+may= open("may.txt","w+")
+june= open("june.txt","w+")
+july= open("july.txt","w+")
+august= open("august.txt","w+")
+september= open("september.txt","w+")
+
+files=[october,november,december,january,feburary,march,april,may,june,july,august,september]
+
+
 fileparse= open(LOCAL_FILE)
 for line in fileparse:
 	current=fileparse.readline()
