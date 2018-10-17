@@ -1,0 +1,1 @@
+I ran this on an Ubuntu VM using Python 3. Nothing else was used other than the things I imported at the top of the main file
