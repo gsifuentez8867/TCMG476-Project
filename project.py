@@ -13,6 +13,8 @@ regex = re.compile(".*\[([^:]*):(.*) \-[0-9]{4}\] \"([A-Z]+) (.+?)( HTTP.*\"|\")
 unsuccess= re.compile("4[0-9][0-9]")
 redirect= re.compile("3[0-9][0-9]")
 
+filenames = {}
+
 numrequest=0
 numbad=0
 numredirect=0
@@ -30,7 +32,10 @@ for line in fileparse:
 		numbad+=1
 	if redirect.match(parts[6]):
 		numredirect+=1	
-		
+	if parts[4] in filenames:
+		filenames[parts[4]]+=1
+	else:
+		filenames[parts[4]]=1	
 fileparse.close()
 
 
