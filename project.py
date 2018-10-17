@@ -69,6 +69,9 @@ for line in fileparse:
 			
 lastdate=datetime.strptime(parts[1],date_format)
 
+
+for i in range(len(files)):
+	files[i].close()
 fileparse.close()
 
 
