@@ -16,3 +16,10 @@ fileparse= open(LOCAL_FILE)
 for line in fileparse:
 	current=fileparse.readline()
 	parts= regex.split(current)
+	if len(parts) < 7:
+		continue
+		
+		numrequest+=1
+		
+		
+fileparse.close()
