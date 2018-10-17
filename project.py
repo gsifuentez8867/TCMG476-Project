@@ -56,6 +56,9 @@ answers.write("The total number of requests is: "+str(numrequest)+" .")
 
 #average per day, week, month
 
+answers.write("The average number of requests per day was "+ str(numrequest/(lastdate-firstdate).days)+"."+"\n")
+answers.write("The average number of requests per week was "+str((numrequest/(lastdate-firstdate).days)*7)+"."+"\n")
+answers.write("The average number of requests per day was "+str((numrequest/(lastdate-firstdate).days)*30)+"."+"\n")
 
 
 #not successful
