@@ -61,7 +61,12 @@ for line in fileparse:
 		filenames[parts[4]]+=1
 	else:
 		filenames[parts[4]]=1	
-		
+		for i in range(len(months)):
+		if month.findall(parts[1])[0]==months[i]:
+			files[i].write(current)
+			continue
+
+			
 lastdate=datetime.strptime(parts[1],date_format)
 
 fileparse.close()
