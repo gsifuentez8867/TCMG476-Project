@@ -10,6 +10,12 @@ local_file, headers = urlretrieve(URL_PATH, LOCAL_FILE)
 ERRORS = []
 
 regex = re.compile(".*\[([^:]*):(.*) \-[0-9]{4}\] \"([A-Z]+) (.+?)( HTTP.*\"|\") ([2-5]0[0-9]) .*")
+unsuccess= re.compile("4[0-9][0-9]")
+redirect= re.compile("3[0-9][0-9]")
+
+numrequest=0
+numbad=0
+numredirect=0
 
 
 fileparse= open(LOCAL_FILE)
@@ -20,7 +26,10 @@ for line in fileparse:
 		continue
 		
 		numrequest+=1
-		
+	if unsuccess.match(parts[6]):
+		numbad+=1
+	if redirect.match(parts[6]):
+		numredirect+=1	
 		
 fileparse.close()
 
@@ -40,8 +49,10 @@ answers.write("The total number of requests is: "+str(numrequest)+" .")
 
 #not successful
 
+answers.write("The percentage of total requests that were unsuccessful is: " +str(round((numbad/numrequest)*100))+ "%."+"\n")
 
 #redirected
 
+answers.write("The percentage of total requests that were redirected is: " +str(round((numredirect/numrequest)*100))+"%."+"\n")
 
 #most and least requested file
